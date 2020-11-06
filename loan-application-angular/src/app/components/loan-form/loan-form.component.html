@@ -1,0 +1,51 @@
+<div class="container text-center align-content-center">
+    <div class="card bg-dark text-white m-3 mt-5 ml-9 col-5 ">
+        <h5 class="card-header text-center mt-2">
+            LOAN DETAILS
+        </h5>
+        <div class="card-body">
+            <form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <label>Customer Id:</label>
+                    <input type="number" class="form-control" formControlName="custId">
+                </div>
+                <div class="form-row">
+                    <label>Loan Amount:</label>
+                    <input type="number" class="form-control" formControlName="loanAmount">
+                </div>
+                <div class="form-row">
+                    <label>Interest Rate:</label>
+                    <input type="number" class="form-control" formControlName="interestRate">
+                </div>
+                <div class="form-row">
+                    <label>Payment Frequency:</label>
+                    <select formControlName="paymentFrequency" class="form-control">
+                        <option selected disabled >Choose...</option>
+                        <option value= 12>Yearly</option>
+                        <option value= 6>Half-Yearly</option>
+                        <option value= 3>Quaterly</option>
+                        <option value= 1>Monthly</option>
+                      </select>
+                </div>
+                <div class="form-row">
+                    <label>Loan Start Date:</label>
+                    <input type="date" class="form-control" formControlName="startDate">
+                </div>
+                <div class="form-row">
+                    <label>Tenure(months):</label>
+                    <input type="number" class="form-control" formControlName="tenure">
+                </div>
+                <div class="form-row row pt-2">
+                    <input type="checkbox" class="form-control col-2" formControlName="evenPrincipal">
+                    <label class="col-4">Even Principal</label>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-4 mr-3 mt-2">Create Loan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <app-view-loan class="col-7"></app-view-loan> -->

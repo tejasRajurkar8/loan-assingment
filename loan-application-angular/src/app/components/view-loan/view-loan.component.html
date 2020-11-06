@@ -1,0 +1,88 @@
+<div class="container text-center align-content-center">
+    <div class="card bg-dark text-white m-3 mt-5 ml-9 col-5 ">
+        <h5 class="card-header text-center mt-2">
+            VIEW LOAN
+        </h5>
+        <div class="card-body">
+            <form [formGroup]="viewLoanForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <label>Customer Id:</label>
+                    <input type="number" class="form-control" formControlName="custId" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg px-4 mr-3 mt-2">View</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="displayLoan" class="container text-center text-white col-10">
+    <table class="table table-dark">
+        <thead class="thead">
+            <tr>
+                <th>Loan Id</th>
+                <th>Customer Id</th>
+                <th>Amount</th>
+                <th>Interest Rate</th>
+                <th>Tenure</th>
+                <th>Trade Date</th>
+                <th>Start</th>
+                <th>Maturity</th>
+                <th>Payment Frequency</th>
+                <th>Even Principal</th>
+                <th>EMI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let loan of loans">
+                <td>{{loan.loanId}}</td>
+                <td>{{loan.custId}}</td>
+                <td>{{loan.loanAmount | number}}</td>
+                <td>{{loan.interestRate}}</td>
+                <td>{{loan.tenure}}</td>
+                <td>{{loan.tradeDate | date}}</td>
+                <td>{{loan.loanStartDate | date}}</td>
+                <td>{{loan.maturityDate | date}}</td>
+
+                <td *ngIf='loan.paymentFrequency==12'>Yearly</td>
+                <td *ngIf='loan.paymentFrequency==6'>Half-Yearly</td>
+                <td *ngIf='loan.paymentFrequency==3'>Quaterly</td>
+                <td *ngIf='loan.paymentFrequency==1'>Monthly</td>
+
+                <td>{{loan.evenPrincipal}}</td>
+                <td (click)="getSchedule(loan.loanId)"><svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-calendar2-event" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                  </svg></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container text-center align-content-center text-white" *ngIf='displaySchedule && schedules'>
+    <table class="table table-dark">
+        <thead class="thead">
+            <tr>
+                <th>Loan Id</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Total Amount</th>
+                <th>Payment Date</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let schedule of schedules">
+                <td>{{schedule.loanId}}</td>
+                <td>{{schedule.principal | number}}</td>
+                <td>{{schedule.projectedInterest | number}}</td>
+                <td>{{schedule.paymentAmount | number}}</td>
+                <td>{{schedule.paymentDate| date}}</td>
+                <td>{{schedule.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
