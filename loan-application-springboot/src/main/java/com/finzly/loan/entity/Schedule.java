@@ -63,6 +63,20 @@ public class Schedule {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public Schedule(Integer scheduleId, Integer loanId, Date paymentDate, Double principal, Double projectedInterest,
+			Double paymentAmount, String status) {
+		super();
+		this.scheduleId = scheduleId;
+		this.loanId = loanId;
+		this.paymentDate = paymentDate;
+		this.principal = principal;
+		this.projectedInterest = projectedInterest;
+		this.paymentAmount = paymentAmount;
+		this.status = status;
+	}
+	public Schedule() {
+		super();
+	}
 	
 	
 }

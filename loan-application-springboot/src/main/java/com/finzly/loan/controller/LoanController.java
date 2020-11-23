@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finzly.loan.entity.Loan;
+import com.finzly.loan.service.LoanService;
 
-import com.finzly.loan.service.CustomerService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-public class CustomerController {
+public class LoanController {
 	
 	
 	@Autowired
-	private CustomerService customerService;
+	private LoanService loanService;
 	
 	@GetMapping(path = "/loans")
 	public Iterable<Loan> getAllLoans(){
-		return customerService.getAllLoans();
+		return loanService.getAllLoans();
 	}
 	
 	
 	@GetMapping(path = "/loans/{custId}")
 	public List<Loan> getLoans(@PathVariable String custId){
 		Integer id = Integer.parseInt(custId);
-		return customerService.getLoans(id);
+		return loanService.getLoans(id);
 	}
 	
-	@PostMapping(path = "/loans/add")
+	@PostMapping(path = "/loans/post")
 	public Loan addLoan(@RequestBody Loan loan){
-		return customerService.addLoan(loan);
+		return loanService.addLoan(loan);
 	}
 	
 	

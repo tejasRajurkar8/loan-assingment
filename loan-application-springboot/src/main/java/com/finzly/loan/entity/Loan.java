@@ -21,7 +21,7 @@ public class Loan {
 	Integer tenure;
 	Double loanAmount;
 	Double interestRate;
-	Date TradeDate;
+	Date tradeDate;
 	Date loanStartDate;
 	Date maturityDate;
 	Boolean evenPrincipal;
@@ -64,10 +64,10 @@ public class Loan {
 		this.interestRate = interestRate;
 	}
 	public Date getTradeDate() {
-		return TradeDate;
+		return this.tradeDate;
 	}
 	public void setTradeDate(Date tradeDate) {
-		TradeDate = tradeDate;
+		this.tradeDate = tradeDate;
 	}
 	public Date getLoanStartDate() {
 		return loanStartDate;
@@ -87,8 +87,24 @@ public class Loan {
 	public void setEvenPrincipal(Boolean evenPrincipal) {
 		this.evenPrincipal = evenPrincipal;
 	}
+	public Loan(Integer loanId, Integer custId, Integer paymentFrequency, Integer tenure, Double loanAmount,
+			Double interestRate, Date tradeDate, Date loanStartDate, Date maturityDate, Boolean evenPrincipal) {
+		super();
+		this.loanId = loanId;
+		this.custId = custId;
+		this.paymentFrequency = paymentFrequency;
+		this.tenure = tenure;
+		this.loanAmount = loanAmount;
+		this.interestRate = interestRate;
+		this.tradeDate = tradeDate;
+		this.loanStartDate = loanStartDate;
+		this.maturityDate = maturityDate;
+		this.evenPrincipal = evenPrincipal;
+	}
+	public Loan() {
+		super();
+	}
 	
-
 	
 
 }

@@ -10,7 +10,7 @@ import com.finzly.loan.entity.Loan;
 
 
 
-public interface CustomerRepository extends JpaRepository<Loan, Integer> {
+public interface LoanRepository extends JpaRepository<Loan, Integer> {
 
 	List<Loan> findByCustId(Integer custId);
 }
